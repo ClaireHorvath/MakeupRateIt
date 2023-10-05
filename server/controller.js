@@ -6,9 +6,9 @@ module.exports = {
         res.status(200).send(makeupItems)
     }, 
     createMakeupItem: (req, res) => {
-        const {itemName, rating, imageURL} = req.body;
+        const {title, rating, imageURL} = req.body;
         let newMakeupItem = {
-            itemName: itemName,
+            title: title,
             rating: +rating,
             imageURL,
             id: globalID

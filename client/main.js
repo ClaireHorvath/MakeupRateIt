@@ -14,19 +14,19 @@ const updateMakeupItem = (id, type) => axios.put(`${baseURL}/${id}`, {type}).the
 function submitHandler(e) {
     e.preventDefault()
 
-    let itemName = document.querySelector('#item-name')
+    let title = document.querySelector('#title')
     let rating = document.querySelector('input[name="ratings"]:checked')
     let imageURL = document.querySelector('#img')
 
     let bodyObj = {
-        itemName: itemName.value,
+        title: title.value,
         rating: rating.value, 
         imageURL: imageURL.value
     }
 
     createMakeupItem(bodyObj)
 
-    itemName.value = ''
+    title.value = ''
     rating.checked = false
     imageURL.value = ''
 }
@@ -36,7 +36,7 @@ function createMakeupItemCard(makeupItem) {
     makeupItemCard.classList.add('makeup-item-card')
 
     makeupItemCard.innerHTML = `<img alt='makeup item image' src=${makeupItem.imageURL} class="makeup-item-image"/>
-    <p class="makeup-item-name">${makeupItem.itemName}</p>
+    <p class="makeup-item-name">${makeupItem.title}</p>
     <div class="btns-container">
         <button onclick="updateMakeupItem(${makeupItem.id}, 'minus')">-</button>
         <p class="makeup-item-rating">${makeupItem.rating} stars</p>
